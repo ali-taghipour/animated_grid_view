@@ -1,0 +1,177 @@
+﻿#all {
+    //border:1px solid red;
+    width: 1000px;
+    height: 1200px;
+    margin: 90px auto;
+    padding-left: 40px;
+}
+
+    #all > .col {
+        //border:1px solid blue;
+        width: 23.5%;
+        height: 1200px;
+        float: left;
+        margin-right: 5px;
+        perspective: 500px;
+    }
+
+        #all > .col > .items {
+            position: relative;
+            border: 10px solid #fff;
+            border-radius: 7px;
+            box-shadow: 2px 3px 0 2px #ccc;
+            direction: rtl;
+            text-align: center;
+            font-family: 'B Nazanin';
+            perspective: 500px;
+        }
+
+            #all > .col > .items > img {
+                width: 100%;
+                display: block;
+            }
+
+            #all > .col > .items > .mask {
+                transition: 0.7s;
+                position: absolute;
+                font-size: 20px;
+                top: 0px;
+                left: 0px;
+                background: rgba(220,220,220,0.9);
+                width: 60%;
+                height: 100%;
+                cursor: zoom-in;
+                transform: rotateY(65deg);
+                transform-origin: 0% 0%;
+                opacity: 0;
+            }
+
+            #all > .col > .items:hover > .mask {
+                transform: rotateY(0deg);
+                opacity: 1;
+            }
+
+            #all > .col > .items > .mask > h2 {
+                margin-top: 0px;
+                color: purple;
+            }
+
+            #all > .col > .items > .mask > p {
+                margin: 2px;
+                color: sandybrown;
+                font-size: 18px;
+            }
+
+            #all > .col > .items > .mask > span {
+                margin: 10px;
+                color: red;
+                display: block;
+            }
+
+            #all > .col > .items > .mask > a {
+                margin: 10px;
+                text-decoration: none;
+                color: black;
+            }
+
+                #all > .col > .items > .mask > a:hover {
+                    color: blue;
+                    font-size: 25px;
+                }
+
+#overlay {
+    background: radial-gradient(rgb(77, 45, 45,0.4),white);
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+    #overlay.show {
+        width: 100%;
+        height: 100%;
+    }
+
+    #overlay.hide {
+        width: 0%;
+        height: 0%;
+    }
+
+#pop {
+    width: 400px;
+    margin: 100px auto;
+    text-align: center;
+    direction: rtl;
+}
+
+    #pop > .close {
+        border: 2px solid green;
+        border-radius: 10px;
+        background: url("images/close.png") no-repeat;
+        width: 27px;
+        height: 23px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    #pop > img {
+        display: block;
+        width: 300px;
+        height: 400px;
+        margin: 10px auto;
+    }
+
+    #pop > p {
+        background: rgb(69, 217, 221);
+        color: forestgreen;
+        border: 1px solid gold;
+    }
+
+    #pop.show {
+        animation: anim1 2s;
+    }
+
+    #pop.hide {
+        opacity: 0;
+    }
+
+.items.show {
+    animation:anim2 1s;
+}
+
+.items.hide {
+    opacity: 0;
+}
+
+@keyframes anim1 {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(700deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(0.5) rotate(-450deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+@keyframes anim2{
+    0% {
+        opacity: 0;
+        transform: scale(0) translate(200px) rotateY(700deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(0.5) rotateY(-450deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+    }
+}

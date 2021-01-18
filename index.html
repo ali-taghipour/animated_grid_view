@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="base.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="all">
+        <div class="col">
+          <!--  <div class="items">
+               <img src="images/full/14.jpg" />
+                <div class="mask">
+                    <h2>عنوان</h2>
+                    <p>توضیحاتی درباره ی آیتم ...</p>
+                    <span>250 $</span>
+                    <a href="#">ادامه</a>
+                </div>
+            </div> -->
+        </div>
+        <div class="col">  </div>
+        <div class="col">  </div>
+        <div class="col">  </div>
+    </div>
+    <div id="overlay" class="hide">
+        <div id="pop" class="hide">
+            <span class="close" onclick="closeAll()"></span>
+            <img id="big_img" src="images/full/13.jpg" /> 
+            <p id="big_toz"> توضیحات بیشتر برای آیتم ...</p>
+        </div>
+    </div>
+    <script>
+
+        function create_element(img, title, des, price) {
+            it = document.createElement("div");
+            it.className = "items hide";
+
+            im = document.createElement("img");
+            im.src = "images/full/" + img;
+
+            mas = document.createElement("div");
+            mas.className = "mask";
+
+            h = document.createElement("h2");
+            h.innerHTML = title;
+
+            de = document.createElement("p");
+            de.innerHTML = des;
+
+            pr = document.createElement("span");
+            pr.innerHTML = price + "$";
+
+            anc = document.createElement("a");
+            anc.href = "#";
+            anc.innerHTML = "ادامه";
+
+            mas.appendChild(h);
+            mas.appendChild(de);
+            mas.appendChild(pr);
+            mas.appendChild(anc);
+
+            it.appendChild(im);
+            it.appendChild(mas);
+
+            return it;
+        }
+        cols = document.querySelectorAll("#all > .col");
+        function attach(i) {
+            img = (i % 17 + 1) + ".jpg";
+            title = "عنوان" + (i + 1);
+            des = "توضیحاتی درباره ی آیتم " + (i+1); 
+            price = Math.round(Math.random() * 100);
+
+            it = create_element(img, title, des, price);
+            it.onclick = function () { popUp(i) };
+            it.className = "items show";
+
+            cols[i % 4].appendChild(it);
+        }
+        for (i = 0; i < 30; i++) {
+            setTimeout("attach(" + i + ")", 300*i);
+        }
+        function popUp(i) {
+            overlay.className = "show";
+            pop.className = "show";
+            big_img.src = "images/full/" + (i%17+1) + ".jpg";
+        }
+        function closeAll() {
+            overlay.className = "hide";
+            pop.className = "hide";
+        }
+    </script>
+</body>
+</html>
